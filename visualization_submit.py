@@ -32,13 +32,6 @@ def getnumpydata(h5_file_path,slide_file_path,att_file_path,ori_file_path):
         
         imgdata[int((coord/wsi.level_downsamples[downsample1])[1]):int((coord/wsi.level_downsamples[downsample1])[1])+patch_size*16,
                 int((coord/wsi.level_downsamples[downsample1])[0]):int((coord/wsi.level_downsamples[downsample1])[0])+patch_size*16]=att_weight1[0][idx]
-        for ii in range(patch_size*16):
-            print(str(idx)+"/"+str(ii)+"/"+str(patch_size*16))
-            for jj in range(patch_size*16):
-                if int((coord/wsi.level_downsamples[downsample1])[1])+ii<len(imgdata) and int((coord/wsi.level_downsamples[downsample1])[0])+jj<len(imgdata[0]):
-                    imgdata[int((coord/wsi.level_downsamples[downsample1])[1])+ii,
-                        int((coord/wsi.level_downsamples[downsample1])[0])+jj]=imgdata[int((coord/wsi.level_downsamples[downsample1])[1])+ii,
-                                                                             int((coord/wsi.level_downsamples[downsample1])[0])+jj]
     
     ori_data = np.load(ori_file_path)
     imgdata1=np.zeros((len(ori_data),len(ori_data[0])))
